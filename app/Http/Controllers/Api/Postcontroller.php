@@ -10,7 +10,7 @@ use App\Models\Post;
 class Postcontroller extends Controller
 {
     public function index(){
-        $posts = Post::all();
+        $posts = Post::with('category','tags')->paginate(6);
         return response()->json([
             'success'  => true,
             'posts'    =>$posts
